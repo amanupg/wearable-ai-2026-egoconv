@@ -1,6 +1,6 @@
-# EgoConv — ECCV 2026 Wearable-AI Grand Challenge (1st place, Large division)
+# EgoConv — ECCV 2026 Wearable-AI Grand Challenge (2nd place, Large division)
 
-Winning entry for the **EgoConv Large (2B+)** sub-track of the
+Runner-up entry for the **EgoConv Large (2B+)** sub-track of the
 [Wearable-AI Grand Challenge](https://wearable-ai-workshop.github.io/) at ECCV 2026,
 hosted by Meta.
 
@@ -9,10 +9,12 @@ hosted by Meta.
 | | |
 |---|---|
 | Sub-track | EgoConv, Large division (2B+) |
-| Result | **1st place — grand prize** |
+| Result | **2nd place — runner-up** |
 | Model | Qwen3-VL-32B + QLoRA (r=32) supervised fine-tune |
 | Total parameters | 33.36 B |
-| LLM-Judge score | **0.5649** (held-out split, official Llama-4-Maverick recipe) |
+| LLM-Judge score (official, test split) | **0.4816** — 2nd of 7 |
+| BLEU (official, test split) | **0.1256** — highest in the division |
+| Self-measured judge score (our held-out split) | 0.5649 |
 | Registration ID | `WAI-3292A8CA` |
 | Submitted image | `sha256:6d22ab8fe301abe4abbd44f06495d4c23ecb8937d489ea7f99ff86934e06b6e003` |
 
@@ -101,7 +103,7 @@ Container assembly is documented in [`container/README.md`](container/README.md)
             Conversational QA},
   author = {Upganlawar, Aman},
   year   = {2026},
-  note   = {1st place, EgoConv Large sub-track, Wearable AI Grand Challenge,
+  note   = {2nd place, EgoConv Large sub-track, Wearable AI Grand Challenge,
             Wearable AI Workshop at ECCV 2026}
 }
 ```
