@@ -1,0 +1,6 @@
+# The official starter-kit image ships accelerate but NOT peft, so every LoRA
+# container dies at model load. This shared layer adds it once and is reused by
+# all sub-track images.
+FROM wai-base:latest
+RUN pip install --no-cache-dir "peft==0.20.0"
+RUN python3 -c "import peft, accelerate, torch, transformers; print('peft', peft.__version__)"

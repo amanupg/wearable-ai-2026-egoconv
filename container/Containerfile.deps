@@ -1,0 +1,6 @@
+# SiglipTokenizer requires sentencepiece and protobuf. These must be installed
+# INSIDE the container: the host pod's python3.12 .so files are incompatible
+# with the container's python3.10.
+FROM wai-base-peft:latest
+RUN pip install --no-cache-dir sentencepiece protobuf
+RUN python3 -c "import sentencepiece, google.protobuf, peft; print('deps ok', sentencepiece.__version__, google.protobuf.__version__)"
