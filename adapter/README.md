@@ -1,7 +1,7 @@
-# Winning adapter
+# Runner-up adapter
 
 QLoRA adapter for `Qwen3-VL-32B`, trained on the EgoConv training conversations.
-1st place, EgoConv Large, ECCV 2026 Wearable-AI Grand Challenge.
+2nd place (runner-up), EgoConv Large, ECCV 2026 Wearable-AI Grand Challenge.
 
 The weights file is 1.07 GB and is hosted on the Hugging Face Hub rather than in git:
 
@@ -25,7 +25,7 @@ model = model.merge_and_unload()
 processor = AutoProcessor.from_pretrained("Qwen/Qwen3-VL-32B-Instruct")
 ```
 
-Serving defaults that matter — these were worth more than the adapter itself:
+Serving defaults that matter. These were worth more than the adapter itself:
 
 ```
 WAI_CONV_RECENT=10     # recent frames per turn

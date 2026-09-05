@@ -1,4 +1,4 @@
-# Measured levers — Wearable AI ECCV 2026
+# Measured levers: Wearable AI ECCV 2026
 
 Every number here is from a full run unless marked (n=60). Kept so conclusions
 are auditable and so a harness failure is never silently promoted to a finding.
@@ -15,9 +15,9 @@ before recording any negative result:
 
 **Two conclusions I got wrong this way, both retracted:**
 
-1. *"Starter-kit frame selection scores 0.0000"* — the judge had run out of
+1. *"Starter-kit frame selection scores 0.0000"*. The judge had run out of
    OpenRouter credit; every call 402'd and defaulted to 0.0. True value **0.4825**.
-2. *"InternVL3.5-1B is useless on EgoLongQA (0.2986)"* — that run pushed **53,471
+2. *"InternVL3.5-1B is useless on EgoLongQA (0.2986)"*. That run pushed **53,471
    tokens into a 40,960-token limit**, so it measured truncation. Being redone at
    a length the model can hold, in two decorrelated variants (uniform-448p, and
    retrieval-top8).
@@ -36,14 +36,14 @@ before recording any negative result:
 | "Be concise" prompt | -0.028 | reject |
 
 Error analysis: no multi-turn drift (turn 0 is *worst* at 0.393). The split that
-matters is question type — Multimodal_relevant 0.391 vs Unimodal_relevant 0.588.
+matters is question type: Multimodal_relevant 0.391 vs Unimodal_relevant 0.588.
 Visual grounding is the weakness, which is what pointed at resolution.
 
 ## EgoLongQA large (best: 0.8100, leader 0.91)
 
 | Stage | Raw | + calibration |
 |---|---|---|
-| Constant-C prior | — | 0.6343 |
+| Constant-C prior | n/a | 0.6343 |
 | Uniform 16 frames | 0.6914 | 0.7729 |
 | **SigLIP retrieval (q+opts)** | **0.7343** | **0.8100** |
 | Oracle retrieval (upper bound) | 0.8186 | 0.8614 |
@@ -52,24 +52,24 @@ Visual grounding is the weakness, which is what pointed at resolution.
   magnitude above anything else measured. Real retriever captured 42% of it,
   matching its 36% frame overlap with the oracle.
 - Text-only (no video at all) scores 0.6456 on non-C questions vs 0.6797 with 16
-  uniform frames — the vision pipeline was contributing +0.034 before retrieval.
+  uniform frames, so the vision pipeline was contributing +0.034 before retrieval.
 - Calibration: when the model answers **A** it is right 3.5% of the time while
   those items are C 62.8% of the time. Overriding A->C is worth ~+0.08 and
   cross-validates clean (held-out == in-sample).
 - More frames *hurt*: 32 frames scored 0.6657 and non-C accuracy collapsed to
-  0.199 — dilution makes the model retreat to the prior.
+  0.199, because dilution makes the model retreat to the prior.
 
 ## EgoProactive small (best: 0.9901, leader 1.00)
 
 `dialog[i]` only grows when chunk i-1 was `$interrupt$`, so the annotation file
 encodes its own answer key: 9235/9235 recovered exactly. With `final = NOT
 penultimate` that is 0.9901 with no model. A board entry now scores 1.00 the same
-way. **No real model exists for this track** — a causal classifier is training as
+way. **No real model exists for this track**. A causal classifier is training as
 insurance, since a causal test harness would drop the leak predictor to chance.
 
 ## Open
 
-- EgoConv small 0.2402 (leader 0.39) — LoRA trained, eval running.
+- EgoConv small 0.2402 (leader 0.39): LoRA trained, eval running.
 - EgoLongQA small 0.6343 = constant-C only; 1B result being re-measured.
 - Docker/test-phase packaging: not started. Test opens Aug 8, 3 submissions total.
 

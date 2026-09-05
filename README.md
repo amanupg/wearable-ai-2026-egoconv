@@ -1,4 +1,4 @@
-# EgoConv — ECCV 2026 Wearable-AI Grand Challenge (2nd place, Large division)
+# EgoConv: ECCV 2026 Wearable-AI Grand Challenge (2nd place, Large division)
 
 Runner-up entry for the **EgoConv Large (2B+)** sub-track of the
 [Wearable-AI Grand Challenge](https://wearable-ai-workshop.github.io/) at ECCV 2026,
@@ -9,11 +9,11 @@ hosted by Meta.
 | | |
 |---|---|
 | Sub-track | EgoConv, Large division (2B+) |
-| Result | **2nd place — runner-up** |
+| Result | **2nd place, runner-up** |
 | Model | Qwen3-VL-32B + QLoRA (r=32) supervised fine-tune |
 | Total parameters | 33.36 B |
-| LLM-Judge score (official, test split) | **0.4816** — 2nd of 7 |
-| BLEU (official, test split) | **0.1256** — highest in the division |
+| LLM-Judge score (official, test split) | **0.4816**, 2nd of 7 |
+| BLEU (official, test split) | **0.1256**, highest in the division |
 | Self-measured judge score (our held-out split) | 0.5649 |
 | Registration ID | `WAI-3292A8CA` |
 | Submitted image | `sha256:6d22ab8fe301abe4abbd44f06495d4c23ecb8937d489ea7f99ff86934e06b6e003` |
@@ -41,7 +41,7 @@ epochs          1
 ```
 
 One epoch, not two. A second epoch was trained and scored **0.4749** against this run's
-**0.5649** — it overfit the conversational style of the training split. The interrupted
+**0.5649**. It overfit the conversational style of the training split. The interrupted
 2-epoch adapter is published alongside the winner so the comparison is reproducible.
 
 ### What actually moved the score
@@ -50,9 +50,9 @@ Measured, not assumed. Full detail in [FINDINGS.md](FINDINGS.md).
 
 | Lever | Measurement |
 |---|---|
-| Frame budget at serving time | 0.5745 (10 recent + 6 history) vs 0.4048 (6 + 2) — **+0.170** |
-| QLoRA SFT vs best zero-shot prompting variant | 0.5649 vs 0.4802 — **+0.085** |
-| 1 epoch vs 2 epochs | 0.5649 vs 0.4749 — **+0.090** |
+| Frame budget at serving time | 0.5745 (10 recent + 6 history) vs 0.4048 (6 + 2), **+0.170** |
+| QLoRA SFT vs best zero-shot prompting variant | 0.5649 vs 0.4802, **+0.085** |
+| 1 epoch vs 2 epochs | 0.5649 vs 0.4749, **+0.090** |
 | Input resolution | dominates model choice; see FINDINGS.md |
 
 Scores in the first row come from a separate A/B on a shared eval subset and are not
@@ -110,6 +110,6 @@ Container assembly is documented in [`container/README.md`](container/README.md)
 
 ## License
 
-Apache-2.0 — see [LICENSE](LICENSE). Released under an OSI-approved permissive license as
+Apache-2.0, see [LICENSE](LICENSE). Released under an OSI-approved permissive license as
 required by the challenge prize terms. The challenge data and starter kit remain under
 Meta's own licenses and are not redistributed here.

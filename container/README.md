@@ -5,7 +5,7 @@ Qwen3-VL-32B weights, the QLoRA adapter, `peft`, and one environment variable.
 
 ## Why `crane` and not `docker build`
 
-The 32B weights made a conventional build impractical — the base image plus weights is
+The 32B weights made a conventional build impractical. The base image plus weights is
 tens of gigabytes, and every rebuild re-pushed layers over a slow link. The final image was
 assembled with [`crane`](https://github.com/google/go-containerregistry) instead, appending
 layers registry-natively with no container runtime and no local pull:
@@ -74,4 +74,4 @@ Also relax `run_evaluation.py`'s `--model-type` from `choices=["llama4","qwen"]`
 
 Run the organisers' `validate_image.sh` against the image, and then actually run
 `run_evaluation.py` on real video. A container that imports cleanly can still produce zero
-predictions — that failure mode is invisible until you evaluate on real mp4s.
+predictions. That failure mode is invisible until you evaluate on real mp4s.
